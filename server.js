@@ -10,9 +10,12 @@ const wss = new WebSocket.Server({ server });
 app.use(express.static(path.join(__dirname, 'public')));
 
 wss.on('connection', (ws) => {
+  console.log("connection");
   ws.on('message', (message) => {
+    console.log("message");
     wss.clients.forEach((client) => {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
+        console.log("send message");
         client.send(message);
       }
     });

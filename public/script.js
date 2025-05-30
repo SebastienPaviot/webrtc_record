@@ -37,7 +37,13 @@ ws.onmessage = async (message) => {
 peerConnection.createOffer().then(offer => {
   return peerConnection.setLocalDescription(offer);
 }).then(() => {
-  ws.send(JSON.stringify({ offer: peerConnection.localDescription }));
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify({ offer: peerConnection.localDescription }));
+  } else {
+    ws.addEventListener('open', () => {
+      ws.send(JSON.stringify({ offer: peerConnection.localDescription }));
+    }, { once: true });
+  }
 });
 
 document.getElementById('startRecord').onclick = () => {

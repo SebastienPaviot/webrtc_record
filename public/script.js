@@ -22,6 +22,7 @@ peerConnection.onicecandidate = event => {
 
 ws.onmessage = async (message) => {
   const data = JSON.parse(message.data);
+  console.log(data);
   if (data.offer) {
     await peerConnection.setRemoteDescription(new RTCSessionDescription(data.offer));
     const answer = await peerConnection.createAnswer();

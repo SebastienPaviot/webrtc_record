@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebRTC + Recording</title>
+  <style>
+    video { width: 45%; margin: 1%; border: 1px solid #ccc; }
+    button { margin: 10px; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Local Stream</h2>
+  <video id="localVideo" autoplay muted playsinline></video>
+  <h2>Remote Stream</h2>
+  <video id="remoteVideo" autoplay playsinline></video>
+  <div>
+    <button id="startRecord">Start Recording</button>
+    <button id="stopRecord">Stop & Download</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

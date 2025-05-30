@@ -1,6 +1,6 @@
 const localVideo = document.getElementById('localVideo');
 const remoteVideo = document.getElementById('remoteVideo');
-const ws = new WebSocket(`ws://${location.host}`);
+const ws = new WebSocket(`wss://${location.host}`);
 const peerConnection = new RTCPeerConnection();
 let localStream;
 let mediaRecorder;

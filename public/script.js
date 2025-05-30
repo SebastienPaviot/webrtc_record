@@ -13,6 +13,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream =>
 });
 
 peerConnection.ontrack = event => {
+  console.log("init remotevideo");
   remoteVideo.srcObject = event.streams[0];
 };
 

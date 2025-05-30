@@ -22,6 +22,7 @@ peerConnection.onicecandidate = event => {
 };
 
 ws.onmessage = async (message) => {
+  console.log(message):
   const data = JSON.parse(message.data);
   console.log(data);
   if (data.offer) {

@@ -26,13 +26,16 @@ ws.onmessage = async (message) => {
   const data = JSON.parse(message.data);
   console.log(data);
   if (data.offer) {
+    console.log("offer");
     await peerConnection.setRemoteDescription(new RTCSessionDescription(data.offer));
     const answer = await peerConnection.createAnswer();
     await peerConnection.setLocalDescription(answer);
     ws.send(JSON.stringify({ answer }));
   } else if (data.answer) {
+    console.log("answer");
     await peerConnection.setRemoteDescription(new RTCSessionDescription(data.answer));
   } else if (data.candidate) {
+     console.log("other");
     await peerConnection.addIceCandidate(new RTCIceCandidate(data.candidate));
   }
 };
